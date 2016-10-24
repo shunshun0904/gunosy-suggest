@@ -2,7 +2,7 @@
 
 １、課題のgunosyフォルダをクローン  
 ```
-$git　clone　https://github.com/shotanaka0513/gunosy.git  
+$git clone https://github.com/shotanaka0513/gunosy.git  
 ```
 ２、クローンしたgunosyフォルダへ移動  
 ```
