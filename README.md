@@ -1,16 +1,25 @@
 ####実行方法
 
+１、課題のgunosyフォルダをクローン
 $git　clone　https://github.com/shotanaka0513/gunosy.git  
-$cd gunosy  
-$ls    
-README.md		gunosy			naivebayes.py  
-__pycache__		inputscraping.py	scraiping.py  
-db.sqlite3		manage.py		templates  
-guesscategory		morphological.py  
+  
+２、クローンしたgunosyフォルダへ移動  
+$cd gunosy    
 
-$python manage.py runserver  
+３、lsコマンドでgunosyフォルダ内を確認  
+$ls 
+  
+README.md		gunosy			naivebayes.py
+__pycache__		inputscraping.py	scraiping.py
+db.sqlite3		manage.py		templates
+guesscategory		morphological.py
 
-サーバーを起動した後ブラウザのurlにアクセス：
+４、現在いるフォルダが３のようになったら以下のコマンドでサーバーを起動　　
+$python manage.py runserver　　
+
+５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し（３０秒ぐらい）待ちます。
+
+６、５を終了後、ブラウザに以下のurlにアクセス
 http://127.0.0.1:8000/guesscategory/
 
-
+７、
