@@ -17,10 +17,10 @@ guesscategory		morphological.py
 ４、現在いるフォルダが３のようになったら以下のコマンドでサーバーを起動  
 $python manage.py runserver　　
 
-５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し（３０秒ぐらい）待ちます。
+５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し（３０秒ぐらい）待ちます。  
 
-６、５を終了後、ブラウザに以下のurlにアクセス　　
+６、５を終了後、ブラウザに以下のurlにアクセス  
 http://127.0.0.1:8000/guesscategory/
 
-７、フォームにurlを入力  
+７、フォームに以下のurlを入力  
 https://gunosy.com/articles/RbyFi
