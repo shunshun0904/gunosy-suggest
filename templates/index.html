@@ -1,0 +1,17 @@
+{%extends "base.html" %}
+
+{%block body %}
+
+<form action = "" method="get">
+
+<label>url：<input type="url" size = "30" name ="url">
+<input type="submit" name="送信">
+</label>
+</form>
+
+{% if category %}
+<p>{{category}}</p><br>
+{% endif %}
+{% endblock %}
+
+	
