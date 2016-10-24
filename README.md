@@ -14,7 +14,7 @@ __pycache__		inputscraping.py	scraiping.py
 db.sqlite3		manage.py		templates
 guesscategory		morphological.py
 
-４、現在いるフォルダが３のようになったら以下のコマンドでサーバーを起動　　
+４、現在いるフォルダが３のようになったら以下のコマンドでサーバーを起動　　　
 $python manage.py runserver　　
 
 ５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し（３０秒ぐらい）待ちます。
