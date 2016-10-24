@@ -28,5 +28,5 @@ $python manage.py runserver　　
 ６、５を終了後、ブラウザに以下のurlにアクセス  
 http://127.0.0.1:8000/guesscategory/
 
-７、フォームに以下のurlを入力  
-https://gunosy.com/articles/RbyFi
+７、フォームに記事urlを入力  
+
