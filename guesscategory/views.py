@@ -15,7 +15,8 @@ gettrain.gunosy_train(nb)
 
 
 def hello_guess_category(request):
-
+	#view関数が呼ばれたびにスクレイピングして学習しないようにオブジェクトは外部で作成します。
+	global nb
 	#フォームからurlを取得
 	url = request.GET.get('url')
 	#urlのhtmlファイルのテキストを取得
