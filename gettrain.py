@@ -1,4 +1,4 @@
-#
+#命名規則： PEP8
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib.error import HTTPError
