@@ -7,7 +7,7 @@ def url_to_text(url):
 	#try文とif文でカプセル化します。
 
 	#空のurlが入力されたときの処理
-	if url == '':
+	if url == '' or url == None:
 		return None
 	try:
 		html= urlopen(url)
