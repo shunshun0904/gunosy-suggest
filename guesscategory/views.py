@@ -1,15 +1,15 @@
 #命名規則： PEP8
 from django.http.response import HttpResponse
-from django.shortcuts import render # 追加する
-from datetime import datetime #追加する
+from django.shortcuts import render
+from datetime import datetime
 import naivebayes
 import gethtmltext
 import gettrain
 
 
-#Gunosyのサイトをスクレイピングをします。
+#ナイーブベイズ分類器のオブジェクトを作成。
 nb = naivebayes.NaiveBayes()
-#Gunosyのサイトの記事データを用いて訓練させます。
+#Gunosyのサイトをスクレイピングし、その記事データを用いて訓練させます。
 gettrain.gunosy_train(nb)
 # nb.train("ラーメン","食べ物")
 
@@ -26,7 +26,6 @@ def hello_guess_category(request):
 	#エラが無かった場合の処理
 	else:
 		category = "推定カテゴリー ：" + nb.classifier(html_text)
-
 	d = {
 	    'category': category
 	}
