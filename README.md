@@ -7,10 +7,6 @@ Python 3.5
 Django 1.10
 ```
 
-####今回使用したライブラリ
-```
-BeautifulSoup4
-```
 
 ####実行方法
 

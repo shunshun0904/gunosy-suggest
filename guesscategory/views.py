@@ -13,7 +13,6 @@ nb = naivebayes.NaiveBayes()
 gettrain.gunosy_train(nb)
 
 
-
 def hello_guess_category(request):
 	#view関数が呼ばれたびにスクレイピングして学習しないようにオブジェクトは外部で作成します。
 	global nb
