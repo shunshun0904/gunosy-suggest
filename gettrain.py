@@ -1,43 +1,83 @@
+#
 from bs4 import BeautifulSoup
-import requests
-from pandas import Series,DataFrame
-import urllib.request, urllib.error, urllib.parse
-import pandas as pd
+from urllib.request import urlopen
+from urllib.error import HTTPError
 import naivebayes
 
 
 def gunosy_train(obj):
 
-	url = "https://gunosy.com/"
-	result = requests.get(url)
-	c = result.content.decode('utf-8')
-	soup = BeautifulSoup(c,"lxml")
-	categoryul = soup.find("ul",{'class':'nav_list gtm-click'})
+	#カテゴリーのurl
+	gunosy_category_urls = [
+	'https://gunosy.com/categories/1',  # エンタメ
+	'https://gunosy.com/categories/2',  # スポーツ
+	'https://gunosy.com/categories/3',  # おもしろ
+	'https://gunosy.com/categories/4',  # 国内
+	'https://gunosy.com/categories/5',  # 海外
+	'https://gunosy.com/categories/6',  # コラム
+	'https://gunosy.com/categories/7',  # IT・科学
+	'https://gunosy.com/categories/8',  # グルメ
+	]
 
-	url = []
+	#カテゴリー名
+	gunosy_category_names = [
+	'エンタメ',
+	'スポーツ',
+	'おもしろ',
+	'国内',
+	'海外',
+	'コラム',
+	'IT・科学',
+	'グルメ',
+	]
 
-	categoryurl = []
-	categoryname = []
-	categorynum = 0;
-
-	for cat in categoryul:
-		if categorynum != 0 and categorynum != 9:
-			categoryurl.append(cat.a.get("href"))
-			categoryname.append(cat.a.string)
-		categorynum = categorynum + 1
-
-
-
-	for (url,name) in zip(categoryurl,categoryname):
-		result1 = requests.get(url)
-		c1 = result1.content.decode('utf-8')
-		soup1 = BeautifulSoup(c1,"lxml")
-		categorydiv = soup1.find_all("div",class_= 'list_title')
-		for categorya in categorydiv:
-			title = categorya.a.string
-			print("obj.train(%s,%s)" %(title,name))
-			obj.train(title,name)
+	#各カテゴリー内のページ数(定数)
+	CATEGORY_PAGE_START_NUMBER = 0
+	CATEGORY_PAGE_END_NUMBER = 20
 
 
-   
-    
+	for (category_url,category_name) in zip(gunosy_category_urls,gunosy_category_names):
+		#try文でカプセル化します。
+		#各カテゴリーのhtmlを取得
+		#ページがサーバー上で見つかるかどうかをチェック。
+		try:
+			category_html = urlopen(category_url)
+		except HTTPError as e:
+			#エラーの内容を端末に出力
+			print(e)
+			continue
+		#各カテゴリーのhtmlオブジェクトを作成
+		#サーバーがあるかどうかをチェック。
+		try:
+			category_object = BeautifulSoup(category_html.read())
+		except URLError as e:
+			#エラーの内容を端末に出力
+			print(e)
+			continue
+
+		#各カテゴリーのページurlのhtmlのタイトルとコンテンツを取得し、ナイーブベイズ分類器で学習させる。
+		for page_number in range(CATEGORY_PAGE_START_NUMBER,CATEGORY_PAGE_END_NUMBER):
+
+			try:
+				page_title = category_object.find_all("div",{"class":"list_title"})[page_number].a.get_text()
+			except AttributeError as e:
+				#エラーの内容を端末に出力
+				print(e)
+				continue
+			#デバックの確認です。
+			print("obj.train(%s,%s)" %(page_title,category_name))
+			#取得したタイトルのテキストを学習させます。
+			obj.train(page_title,category_name)
+			
+			
+			
+
+
+
+
+
+
+
+
+
+

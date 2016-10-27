@@ -11,7 +11,7 @@ import gettrain
 nb = naivebayes.NaiveBayes()
 #Gunosyのサイトをスクレイピングし、その記事データを用いて訓練させます。
 gettrain.gunosy_train(nb)
-# nb.train("ラーメン","食べ物")
+
 
 
 def hello_guess_category(request):

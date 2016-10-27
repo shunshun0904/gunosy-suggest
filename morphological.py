@@ -1,9 +1,10 @@
 #coding: utf-8
-
+#命名規則： PEP8
 import requests
 from xml.etree.ElementTree import *
 
 def split(body):
+    #YahooのAPIを利用して形態素解析
     request_URL = "http://jlp.yahooapis.jp/MAService/V1/parse"
 
     parameter = {'appid': 'dj0zaiZpPVVKS0lNNk1nVWtZRiZzPWNvbnN1bWVyc2VjcmV0Jng9Y2M-',
