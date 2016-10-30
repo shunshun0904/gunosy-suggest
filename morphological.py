@@ -3,6 +3,7 @@
 import requests
 from xml.etree.ElementTree import *
 
+
 def split(body):
     #YahooのAPIを利用して形態素解析
     request_URL = "http://jlp.yahooapis.jp/MAService/V1/parse"
@@ -12,14 +13,16 @@ def split(body):
                 'results': 'ma',
                 'filter':'1|2|3|4|5|9|10'}
     r = requests.get(request_URL, params=parameter)
-
-    elem = fromstring(r.text.encode('utf-8'))
-
-    words = []
-    for e in elem.getiterator("{urn:yahoo:jp:jlp}surface"):
-        words.append(e.text)
-
-    return words
+    
+    try:
+        elem = fromstring(r.text.encode('utf-8'))
+    except:
+        pass
+    else:
+        words = []
+        for e in elem.getiterator("{urn:yahoo:jp:jlp}surface"):
+            words.append(e.text)
+        return words
 
 
 

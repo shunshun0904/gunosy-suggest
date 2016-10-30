@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib.error import HTTPError
 import naivebayes
+import time
 
 
 def gunosy_train(obj):
@@ -31,10 +32,17 @@ def gunosy_train(obj):
 	'グルメ',
 	]
 
-	#各カテゴリー内のページ数(定数)
-	CATEGORY_PAGE_START_NUMBER = 0
-	CATEGORY_PAGE_END_NUMBER = 20
+	#各カテゴリー内のページのタイトルインデックス(定数)
+	PAGE_TITLE_START_INDEX = 0
+	PAGE_TITLE_END_INDEX = 20
 
+	#各カテゴリー内のページの枚数の番号（定数）
+	#汎用性を持たせるため値は変更可能。ただし、1<=CATEGORY_PAGE_START_INDEX,CATEGORY_PAGE_END_INDEX<=100
+	CATEGORY_PAGE_START_INDEX = 1
+	CATEGORY_PAGE_END_INDEX = 100
+
+	#取得ページ数の表示
+	page_numbers = 1
 
 	for (category_url,category_name) in zip(gunosy_category_urls,gunosy_category_names):
 		#try文でカプセル化します。
@@ -55,29 +63,46 @@ def gunosy_train(obj):
 			print(e)
 			continue
 
-		#各カテゴリーのページurlのhtmlのタイトルとコンテンツを取得し、ナイーブベイズ分類器で学習させる。
-		for page_number in range(CATEGORY_PAGE_START_NUMBER,CATEGORY_PAGE_END_NUMBER):
+		#一つのカテゴリーページのページ番号をCATEGORY_PAGE_START_INDEXからCATEGORY_PAGE_END_INDEXまで取得。
+		category_page_urls = []
+		for category_page_index in range(CATEGORY_PAGE_START_INDEX,CATEGORY_PAGE_END_INDEX + 1):
+			category_page_urls.append("%s?page=%s"%(category_url,category_page_index))
 
+		
+		for category_page_url in category_page_urls:
+			#各カテゴリーのページurlのhtmlのタイトルとコンテンツを取得し、ナイーブベイズ分類器で学習させる。
+			#try文でカプセル化します。
+			#各カテゴリーのhtmlを取得
+			#ページがサーバー上で見つかるかどうかをチェック。
 			try:
-				page_title = category_object.find_all("div",{"class":"list_title"})[page_number].a.get_text()
-			except AttributeError as e:
+				category_page_html = urlopen(category_page_url)
+			except HTTPError as e:
 				#エラーの内容を端末に出力
 				print(e)
 				continue
-			#デバックの確認です。
-			print("obj.train(%s,%s)" %(page_title,category_name))
-			#取得したタイトルのテキストを学習させます。
-			obj.train(page_title,category_name)
-			
-			
-			
+				#各カテゴリーのhtmlオブジェクトを作成
+				#サーバーがあるかどうかをチェック。
+			try:
+				category_page_object = BeautifulSoup(category_page_html.read())
+			except URLError as e:
+				#エラーの内容を端末に出力
+				print(e)
+				continue
 
-
-
-
-
-
-
-
+			for page_index in range(PAGE_TITLE_START_INDEX,PAGE_TITLE_END_INDEX):
+				try:
+					page_title = category_page_object.find_all("div",{"class":"list_title"})[page_index].a.get_text()
+				except AttributeError as e:
+					#エラーの内容を端末に出力
+					print(e)
+					continue
+				#デバックの確認です。
+				print("obj.train(%s,%s)" %(page_title,category_name))
+				#取得したタイトルのテキストを学習させます。
+				obj.train(page_title,category_name)
+				#Gunosyのサイトでアクセス制限があれば以下の関数を利用して下さい。
+				#time.sleep(1)
+				print(page_numbers)
+				page_numbers = page_numbers + 1
 
 

@@ -27,7 +27,6 @@ class NaiveBayes:
 
 
     def train(self, doc, cat):
-        print(str(doc)+str(cat))
         word = getwords(doc)
         for w in word:
             self.wordcountup(w, cat)
