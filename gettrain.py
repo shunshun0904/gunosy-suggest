@@ -96,13 +96,12 @@ def gunosy_train(obj):
 					#エラーの内容を端末に出力
 					print(e)
 					continue
-				#デバックの確認です。
-				print("obj.train(%s,%s)" %(page_title,category_name))
+				#デバック
+				print("No%s,obj.train(%s,%s)" %(page_numbers,page_title,category_name))
+				page_numbers = page_numbers + 1
 				#取得したタイトルのテキストを学習させます。
 				obj.train(page_title,category_name)
 				#Gunosyのサイトでアクセス制限があれば以下の関数を利用して下さい。
 				#time.sleep(1)
-				print(page_numbers)
-				page_numbers = page_numbers + 1
 
 
