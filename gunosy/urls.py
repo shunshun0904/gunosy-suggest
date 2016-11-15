@@ -17,5 +17,6 @@ from django.conf.urls import include, url
 
 
 urlpatterns = [
-    url(r'^guesscategory/', include('guesscategory.urls', namespace='guesscategory')),
+    url(r'^guesscategory/', include(
+        'guesscategory.urls', namespace='guesscategory')),
 ]
