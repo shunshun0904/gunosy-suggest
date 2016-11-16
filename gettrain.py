@@ -53,11 +53,9 @@ def gunosy_train(obj):
             continue
 
         # 一つのカテゴリーページのページ番号をCATEGORY_STARTからCATEGORY_ENDまで取得。
-        category_page_urls = []
-        for category_page_index in range(CATEGORY_START, CATEGORY_END + 1):
-            category_page_urls.append("%s?page=%s" %
-                                      (url, category_page_index))
-
+        category_page_urls = ["%s?page=%s" %(url,category_page_index) 
+        for category_page_index in range (CATEGORY_START, CATEGORY_END + 1)]
+       
         for category_page_url in category_page_urls:
             # 各カテゴリーのページurlのhtmlのタイトルとコンテンツを取得し、ナイーブベイズ分類器で学習させる。
             # try文でカプセル化します。
