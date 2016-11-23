@@ -10,16 +10,15 @@ def gunosy_train(obj):
 
     # カテゴリーのurl
     categories = {
-        'https://gunosy.com/categories/1':'エンタメ',
-        'https://gunosy.com/categories/2':'スポーツ',
-        'https://gunosy.com/categories/3':'おもしろ',
-        'https://gunosy.com/categories/4':'国内',
-        'https://gunosy.com/categories/5':'海外',
-        'https://gunosy.com/categories/6':'コラム',
-        'https://gunosy.com/categories/7':'IT・科学',
-        'https://gunosy.com/categories/8':'グルメ',
+        'https://gunosy.com/categories/1': 'エンタメ',
+        'https://gunosy.com/categories/2': 'スポーツ',
+        'https://gunosy.com/categories/3': 'おもしろ',
+        'https://gunosy.com/categories/4': '国内',
+        'https://gunosy.com/categories/5': '海外',
+        'https://gunosy.com/categories/6': 'コラム',
+        'https://gunosy.com/categories/7': 'IT・科学',
+        'https://gunosy.com/categories/8': 'グルメ',
     }
-
 
     # 各カテゴリー内のページのタイトルインデックス(定数)
     PAGE_TITLE_START = 0
@@ -33,7 +32,7 @@ def gunosy_train(obj):
     # 取得ページ数の表示
     page_numbers = 1
 
-    for url,name in categories.items():
+    for url, name in categories.items():
         # try文でカプセル化します。
         # 各カテゴリーのhtmlを取得
         # ページがサーバー上で見つかるかどうかをチェック。
@@ -53,9 +52,10 @@ def gunosy_train(obj):
             continue
 
         # 一つのカテゴリーページのページ番号をCATEGORY_STARTからCATEGORY_ENDまで取得。
-        category_page_urls = ["%s?page=%s" %(url,category_page_index) 
-        for category_page_index in range (CATEGORY_START, CATEGORY_END + 1)]
-       
+        category_page_urls = ["%s?page=%s" % (url, category_page_index)
+                              for category_page_index
+                              in range(CATEGORY_START, CATEGORY_END + 1)]
+
         for category_page_url in category_page_urls:
             # 各カテゴリーのページurlのhtmlのタイトルとコンテンツを取得し、ナイーブベイズ分類器で学習させる。
             # try文でカプセル化します。
@@ -87,9 +87,9 @@ def gunosy_train(obj):
                     continue
                 # デバック
                 print("No%s,obj.train(%s,%s)" %
-                      (page_numbers, page_title,name))
+                      (page_numbers, page_title, name))
                 page_numbers = page_numbers + 1
                 # 取得したタイトルのテキストを学習させます。
-                obj.train(page_title,name)
+                obj.train(page_title, name)
                 # Gunosyのサイトでアクセス制限があれば以下の関数を利用して下さい。
                 # time.sleep(1)
