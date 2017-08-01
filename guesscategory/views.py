@@ -22,10 +22,10 @@ def hello_guess_category(request):
     html_text = gethtmltext.url_to_text(url)
     # エラーが出た場合の処理
     if html_text is None:
-        category = "urlを入力して下さい。"
+        category = "Please enter URL."
     # エラが無かった場合の処理
     else:
-        category = "推定カテゴリー ：" + nb.classifier(html_text)
+        category = "GUESS CATEGORY ：" + nb.classifier(html_text)
     d = {
         'category': category
     }

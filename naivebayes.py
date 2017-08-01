@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import math
 import sys
-
+from collections import defaultdict
 # yahoo!形態素解析
 import morphological
 

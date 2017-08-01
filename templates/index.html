@@ -1,17 +1,22 @@
 {%extends "base.html" %}
 
 {%block body %}
+<html>
+<head>
+     <title>text classification app by naivebayes</title>
+</head>
+<body>
+<h1>text classification app by naivebayes</h1>
 
 <form action = "" method="get">
 
 <label>url：<input type="url" size = "30" name ="url">
-<input type="submit" name="送信">
+<input type="submit" name="Enter">
 </label>
 </form>
-
+</body>
+</html>
 {% if category %}
 <p>{{category}}</p><br>
 {% endif %}
 {% endblock %}
-
-	
