@@ -7,16 +7,10 @@ notifications:
     email: false
 
 before_install:
-    - sudo apt-get update
-    - sudo apt-get -y install python-pip
-    - sudo pip install --upgrade pip
-    - pip install --upgrade pip
-    - pip install pep8
     - pip install autopep8
 install:
   - pip install -r requirements.txt
 script:
-  - python manage.py runserver
   - python crossvalidation0.py
   - python crossvalidation1.py
   - python crossvalidation1_stopwords.py
