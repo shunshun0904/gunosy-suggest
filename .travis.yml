@@ -10,18 +10,8 @@ before_install:
     - pip install autopep8
 install:
   - pip install -r requirements.txt
-script:
-  - python crossvalidation0.py
-  - python crossvalidation1.py
-  - python crossvalidation1_stopwords.py
-  - python crossvalidation.py
-  - python feature_selection_ka2.py
-  - python feature_selection.py
-  - python feature_selection_all.py
-  - python eval.py
-  - python naivebayes.py
-  - python trans_data.py
-  - num_errors_before=`find . -name \*.py -exec pep8 --ignore=E402 {} + | wc -l`
+script: pytest
+    - num_errors_before=`find . -name \*.py -exec pep8 --ignore=E402 {} + | wc -l`
     - echo $num_errors_before
 
     - cd "$TRAVIS_BUILD_DIR"
