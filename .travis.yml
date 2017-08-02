@@ -3,14 +3,14 @@ python:
   - "3.6"
 env:
   - SECRET_KEY=secretkey
-notifications:
-    email: false
 
 before_install:
     - pip install autopep8
 install:
   - pip install -r requirements.txt
-script: pytest
+  - pip install coveralls
+script:
+    - coverage run --source=hoge_test manage.py test
     - num_errors_before=`find . -name \*.py -exec pep8 --ignore=E402 {} + | wc -l`
     - echo $num_errors_before
 
@@ -41,3 +41,5 @@ script: pytest
 
     # List the remaining errors - these will have to be fixed manually
     - find . -name \*.py -exec pep8 --ignore=E402 {} +
+ after_success:
+    - coveralls
