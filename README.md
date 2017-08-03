@@ -88,6 +88,5 @@ http://127.0.0.1:8000/guesscategory/
 
 以下に、（１）ナイーブベイズのみ、（２）ナイーブベイズとストップワード、（３）ナイーブベイズとストップワード、相互情報量による抽出、（４）ナイーブベイズとストップワード、カイ２乗値による抽出
 の４パターンでの精度を示す。
+<img src="http://imgur.com/Dz2DRGB" alt="エビフライトライアングル" title="サンプル" >
 ```
-<img src="http://imgur.com/Dz2DRGB" alt="精度比較">
-http://imgur.com/Dz2DRGB
