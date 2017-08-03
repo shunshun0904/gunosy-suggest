@@ -90,4 +90,4 @@ http://127.0.0.1:8000/guesscategory/
 の４パターンでの精度を示す。
 
 ```
-<img src="http://imgur.com/Dz2DRGB" alt="エビフライトライアングル" title="サンプル" >
+<img src="https://user-images.githubusercontent.com/25298659/28901552-eb2ee4b2-7833-11e7-881b-bd29585f3989.png"  title="サンプル" >
