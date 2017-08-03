@@ -1,4 +1,6 @@
 language: python
+env:
+  - DJANGO_VERSION=1.11.3
 python:
   - "3.6"
 #before_install:
@@ -9,8 +11,9 @@ python:
 #  - pip install pep8
 #  - pip install autopep8
 install:
+  - pip install -q Django==$DJANGO_VERSION
+  - python setup.py -q install
   - pip install .
   - pip install -r requirements.txt -r test-requirements.txt
-
 script:
   - manage.py
