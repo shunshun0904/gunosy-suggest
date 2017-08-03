@@ -34,27 +34,27 @@ CATEGORY_PAGE_END_INDEX = 100を変更すると取得するカテゴリーペー
 ####実行方法
 ```
 １、課題のgunosyフォルダをクローン  
-```
+
 $git clone https://github.com/shotanaka0513/gunosy.git  
-```
+
 ２、クローンしたgunosyフォルダへ移動  
-```
+
 $cd gunosy    
-```
+
 ３、lsコマンドでgunosyフォルダ内を確認  
-```
+
 $ls
 
 README.md		gunosy			naivebayes.py
 __pycache__		inputscraping.py	scraiping.py
 db.sqlite3		manage.py		templates
 guesscategory		morphological.py
-```
+
 
 ４、現在いるフォルダが３のようになったら以下のコマンドでサーバーを起動  
-```
+
 $python manage.py runserver　　
-```
+
 
 ５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し（３０秒ぐらい）待ちます。  
 
@@ -71,10 +71,10 @@ http://127.0.0.1:8000/guesscategory/
 ```
 ■精度検証について
 精度検証にはデータ数が少ないこともあり、「交差検定（leave one out）」を用いた。
-```
+
 １、python trans_data.pyを実行
 取得したデータを[カテゴリー　単語：単語数]のようにデータ形式を変換する。（gunosy.csvが作成される）
-```
+
 ２、python crossvalidation.py を実行
 交差検定をし、精度を評価する。
 ```
@@ -84,7 +84,9 @@ http://127.0.0.1:8000/guesscategory/
 ```
 ■精度向上の手法
 ストップワードと２種類の特徴選択（相互情報量、カイ２乗値）を用いる手法を組み合わせて、分類性能の比較をした。
-```
+
 以下に、（１）ナイーブベイズのみ、（２）ナイーブベイズとストップワード、（３）ナイーブベイズとストップワード、相互情報量による抽出、（４）ナイーブベイズとストップワード、カイ２乗値による抽出
 の４パターンでの精度を示す。
 ![Demo]https://user-images.githubusercontent.com/25298659/28901552-eb2ee4b2-7833-11e7-881b-bd29585f3989.png
+
+```
