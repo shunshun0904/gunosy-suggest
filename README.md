@@ -46,7 +46,7 @@ $cd gunosy
 
 $ls
 
-README.md		gunosy			naivebayes.py
+README.md		gunosy			naivebayes.py       
 __pycache__		inputscraping.py	scraiping.py
 db.sqlite3		manage.py		templates
 guesscategory		morphological.py
@@ -78,6 +78,7 @@ http://127.0.0.1:8000/guesscategory/
 
 ２、python crossvalidation.py を実行
 交差検定をし、精度を評価する。
+分類精度は0.7690355329949239　である。
 ```
 
 
@@ -89,18 +90,20 @@ http://127.0.0.1:8000/guesscategory/
 ■ストップワードについて
 stopwords.txtにまとめてある。（参考にしたサイトhttp://qiita.com/HirofumiYashima/items/e588ea80deac090bc4b3）
 
-以下に、（1）ナイーブベイズとストップワード、(2）ナイーブベイズのみ、（3）ナイーブベイズとストップワード、カイ２乗値による抽出,（4）ナイーブベイズとストップワード、相互情報量による抽出、
+以下に、（1）ナイーブベイズとストップワード、(2）ナイーブベイズのみ、（3）ナイーブベイズとストップワード、カイ２乗値による抽出,
+（4）ナイーブベイズとストップワード、相互情報量による抽出、
 の４パターンでの精度を示す。
 ```
 
-<img src="https://user-images.githubusercontent.com/25298659/28901552-eb2ee4b2-7833-11e7-881b-bd29585f3989.png"  title="サンプル" >
+<img src="https://user-images.githubusercontent.com/25298659/28904628-4fb2bc98-7847-11e7-8260-86d79efdf83c.png"  title="サンプル" >
 
 以上より、特徴選択は行わずに、ストップワードの除去のみ用いたほうが精度が若干向上することがわかる。
 
 
 ```
 ■特徴選択による精度の確認
-一般的には特徴選択を用いた単語の除去は精度が向上するが、今回は相互情報量、カイ２乗値による特徴選択を用いると精度が悪化した。以下に選択単語数が1〜1800までの時の精度のグラフを示す。単語数が多くなるにつれ、特徴選択を用いなかった分類器の精度に近くなる。
+一般的には特徴選択を用いた単語の除去は精度が向上するが、今回は相互情報量、カイ２乗値による特徴選択を用いると精度が悪化した。
+以下に選択単語数が1〜1800までの時の精度のグラフを示す。単語数が多くなるにつれ、特徴選択を用いなかった分類器の精度に近くなる。
 ```
 
 <img src="https://user-images.githubusercontent.com/25298659/28902353-550d955e-7839-11e7-942d-18e0a14a46a6.png"  title="相互情報量による特徴選択" >　<img src="https://user-images.githubusercontent.com/25298659/28902363-682f2c56-7839-11e7-9b2f-fcab9a3f19f8.png"  title="カイ２乗値による特徴選択" >　
