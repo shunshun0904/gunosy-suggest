@@ -16,13 +16,17 @@ def split(body):
     zPWNvbnN1bWVyc2VjcmV0Jng9ODc-""",
                  'sentence': body,
                  'results': 'ma',
+<<<<<<< HEAD
+=======
+                 # 'filter': '1|2|3|4|5|9|10'}
+>>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
                  'filter': '1|2|9|10'}
     r = requests.get(request_URL, params=parameter)
 
     try:
         elem = fromstring(r.text.encode('utf-8'))
 
-    except:
+    except BaseException:
         pass
     else:
         words = []

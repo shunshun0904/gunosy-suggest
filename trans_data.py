@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 import sys
 from collections import defaultdict
 from collections import Counter
@@ -12,7 +12,7 @@ from collections import Counter
 # [category] [word:count] [word:count] ...  <- doc2
 
 
-def trans_data(categoryfile,datafile, outfile):
+def trans_data(categoryfile, datafile, outfile):
     # カテゴリをロード
     category = []
     fp = open("category.csv")  # test.mapでも同じ
@@ -28,7 +28,6 @@ def trans_data(categoryfile,datafile, outfile):
         line = line.rstrip()
         stopwords.append(line)
     fp.close()
-
 
     rownum = []
     fp = open("vocaburary.csv")
@@ -51,8 +50,8 @@ def trans_data(categoryfile,datafile, outfile):
         itemList = line.split(',')
         counter = Counter(itemList)
         for word, cnt in counter.most_common():
-            if not word in stopwords:  # ★ストップワードに登録されていない
-                train_data[lineCount-1].append("%s:%d" % (word, cnt))
+            if word not in stopwords:  # ★ストップワードに登録されていない
+                train_data[lineCount - 1].append("%s:%d" % (word, cnt))
     fp.close()
 
     fp = open(outfile, "w")
@@ -61,8 +60,9 @@ def trans_data(categoryfile,datafile, outfile):
     fp.close()
     #    train_data.clear()
 
+
 if __name__ == "__main__":
     # 訓練データを変換
-    trans_data("category.csv", "vocaburary.csv" ,"gunosy-stop.csv")
+    trans_data("category.csv", "vocaburary.csv", "gunosy-stop.csv")
     # テストデータを変換
-    trans_data("category.csv", "vocaburary.csv" ,"gunosy-test-stop.csv")
+    trans_data("category.csv", "vocaburary.csv", "gunosy-test-stop.csv")

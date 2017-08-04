@@ -28,8 +28,12 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '192.168.33.10',
     '192.168.33.10:8000',
+<<<<<<< HEAD
     '192.168.33.10:8000/guesscategory'
 ]
+=======
+    '192.168.33.10:8000/guesscategory']
+>>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
 DOWNLOAD_DELAY = 3
 ROBOTSTXT_OBEY = True
 DEPTH_LIMIT = 3

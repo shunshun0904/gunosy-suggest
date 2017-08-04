@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 import math
 import sys
 from collections import defaultdict
@@ -6,8 +6,10 @@ from feature_selection import mutual_information
 
 # 特徴選択を行うナイーブベイズ分類器
 
+
 class NaiveBayes:
     """Multinomial Naive Bayes"""
+
     def __init__(self, k):          # 相互情報量が大きい順にk個の単語をボキャブラリとする
         self.categories = set()     # カテゴリの集合
         self.vocabularies = set()   # ボキャブラリの集合
@@ -36,7 +38,8 @@ class NaiveBayes:
             # L[i]=(score, word)なので単語はL[i][1]で取り出せる
             self.vocabularies.add(L[i][1])
             # ボキャブラリの数が指定した数に達したら終了
-            if len(self.vocabularies) == self.k: break
+            if len(self.vocabularies) == self.k:
+                break
 
         # 文書集合からカテゴリと単語をカウント
         for d in data:
@@ -46,11 +49,13 @@ class NaiveBayes:
                 word, count = wc.split(":")
                 count = int(count)
                 # 単語がボキャブラリに含まれなければ無視
-                if not word in self.vocabularies: continue
+                if word not in self.vocabularies:
+                    continue
                 self.wordcount[cat][word] += count
         # 単語の条件付き確率の分母の値をあらかじめ一括計算しておく（高速化のため）
         for cat in self.categories:
-            self.denominator[cat] = sum(self.wordcount[cat].values()) + len(self.vocabularies)
+            self.denominator[cat] = sum(
+                self.wordcount[cat].values()) + len(self.vocabularies)
 
     def classify(self, doc):
         """事後確率の対数 log(P(cat|doc)) がもっとも大きなカテゴリを返す"""
@@ -67,7 +72,8 @@ class NaiveBayes:
         """単語の条件付き確率 P(word|cat) を求める"""
         # ラプラススムージングを適用
         # 分母はtrain()の最後で一括計算済み
-        return float(self.wordcount[cat][word] + 1) / float(self.denominator[cat])
+        return float(self.wordcount[cat][word] + 1) / \
+            float(self.denominator[cat])
 
     def score(self, doc, cat):
         """文書が与えられたときのカテゴリの事後確率の対数 log(P(cat|doc)) を求める"""
@@ -77,7 +83,8 @@ class NaiveBayes:
             word, count = wc.split(":")
             count = int(count)
             # 単語がボキャブラリに含まれなければ無視
-            if not word in self.vocabularies: continue
+            if word not in self.vocabularies:
+                continue
             # logをとるとかけ算は足し算になる
             for i in range(count):
                 score += math.log(self.wordProb(word, cat))  # log P(word|cat)
@@ -85,4 +92,5 @@ class NaiveBayes:
 
     def __str__(self):
         total = sum(self.catcount.values())  # 総文書数
-        return "documents: %d, vocabularies: %d, categories: %d" % (total, len(self.vocabularies), len(self.categories))
+        return "documents: %d, vocabularies: %d, categories: %d" % (
+            total, len(self.vocabularies), len(self.categories))

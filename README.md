@@ -76,7 +76,7 @@ http://127.0.0.1:8000/guesscategory/
 １、python trans_data.pyを実行
 取得したデータを[カテゴリー　単語：単語数]のようにデータ形式を変換する。（gunosy.csvが作成される）
 
-２、python crossvalidation.py を実行
+２、python crossvalidation_normal.py を実行
 交差検定をし、精度を評価する。
 分類精度は0.7690355329949239　である。
 ```
@@ -92,7 +92,8 @@ stopwords.txtにまとめてある。（参考にしたサイトhttp://qiita.com
 
 以下に、（1）ナイーブベイズとストップワード、(2）ナイーブベイズのみ、（3）ナイーブベイズとストップワード、カイ２乗値による抽出,
 （4）ナイーブベイズとストップワード、相互情報量による抽出、
-の４パターンでの精度を示す。
+の４パターンでの精度を示す。なお特徴選択に用いた単語数は５００とした（除去する単語数に限らず、精度は悪くなる。詳細は後述する。）。
+
 ```
 
 <img src="https://user-images.githubusercontent.com/25298659/28904628-4fb2bc98-7847-11e7-8260-86d79efdf83c.png"  title="サンプル" >
@@ -108,4 +109,8 @@ stopwords.txtにまとめてある。（参考にしたサイトhttp://qiita.com
 
 <img src="https://user-images.githubusercontent.com/25298659/28902353-550d955e-7839-11e7-942d-18e0a14a46a6.png"  title="相互情報量による特徴選択" >　<img src="https://user-images.githubusercontent.com/25298659/28902363-682f2c56-7839-11e7-9b2f-fcab9a3f19f8.png"  title="カイ２乗値による特徴選択" >　
 
+
+####上記グラフの作成手順
+
 ```
+■特徴選択による精度の確認
