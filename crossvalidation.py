@@ -1,16 +1,16 @@
-#coding:utf-8
+# coding:utf-8
 import codecs
 import sys
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-#from naivebayes_normal import NaiveBayes  # 特徴選択なしのナイーブベイズを使う
+# from naivebayes_normal import NaiveBayes  # 特徴選択なしのナイーブベイズを使う
 from naivebayes_fskai2 import NaiveBayes  # 特徴選択（カイ２乗）付きのナイーブベイズを使う
-#from naivebayes_fs import NaiveBayes  # 特徴選択（カイ２乗）付きのナイーブベイズを使う
+# from naivebayes_fs import NaiveBayes  # 特徴選択（カイ２乗）付きのナイーブベイズを使う
 
 klist2 = []
 aclist2 = []
-for i in range(1,2001,200):
+for i in range(1, 2001, 200):
     K = i
     klist2.append(K)
 
@@ -70,19 +70,19 @@ for i in range(1,2001,200):
         # N-fold Cross Validationで分類精度を評価
         average = crossValidation(data, N=num, randomize=True)
 
-        print ("accuracy:", average)
+        print("accuracy:", average)
 
         fig = plt.figure()
         ax = plt.gca()
         #ax.plot(klist,aclist, c='b', label="nothing")
         #ax.plot(klist1,aclist1, c='r', label="Mutual information")
-        ax.plot(klist2,aclist2, "-o", c='b', label="Chi-squared")
+        ax.plot(klist2, aclist2, "-o", c='b', label="Chi-squared")
         ax.set_xlabel("vocaburary size ")
         ax.set_ylabel("accuracy")
         ax.set_title("acucuracy-vocabulalysize")
         plt.legend()
-        plt.xlim(0,2100)
-        plt.ylim(0,1.0)
+        plt.xlim(0, 2100)
+        plt.ylim(0, 1.0)
         plt.show()
         filename = "feature_selection_ka2.png"
         plt.savefig(filename)

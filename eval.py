@@ -1,9 +1,10 @@
-#coding:utf-8
+# coding:utf-8
 import codecs
 from naivebayes_normal import NaiveBayes
 
 # eval.py
 # ナイーブベイズの性能評価
+
 
 def evaluate(trainfile, testfile):
     # 訓練データをロード
@@ -18,7 +19,7 @@ def evaluate(trainfile, testfile):
     # ナイーブベイズを訓練
     nb = NaiveBayes()
     nb.train(trainData)
-    print (nb)
+    print(nb)
 
     # テストデータを評価
     hit = 0
@@ -33,8 +34,9 @@ def evaluate(trainfile, testfile):
         if correct == predict:
             hit += 1  # 予測と正解が一致したらヒット！
         numTest += 1
-    print ("accuracy:", float(hit) / float(numTest))
+    print("accuracy:", float(hit) / float(numTest))
     fp.close()
+
 
 if __name__ == "__main__":
     evaluate("gunosy.csv", "gunost-t.csv")

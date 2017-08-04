@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 import codecs
 import math
 import sys
@@ -6,10 +6,12 @@ from collections import defaultdict
 
 # feature_selection.py
 
+
 def chisquare(target, data, k=0):
     """カテゴリtargetにおけるカイ二乗値が高い上位k件の単語を返す"""
     # 上位k件を指定しないときはすべて返す
-    if k == 0: k = sys.maxsize
+    if k == 0:
+        k = sys.maxsize
 
     V = set()
     N11 = defaultdict(float)  # N11[word] -> wordを含むtargetの文書数
@@ -54,12 +56,14 @@ def chisquare(target, data, k=0):
         e00 = (n00 + n01) * (n00 + n10) / float(N)
 
         # カイ二乗値の各項を計算
-        score = (n00-e00)**2/e00 + (n01-e01)**2/e01 + (n10-e10)**2/e10 + (n11-e11)**2/e11
-        chiSquare.append( (score, word) )
+        score = (n00 - e00)**2 / e00 + (n01 - e01)**2 / e01 + \
+            (n10 - e10)**2 / e10 + (n11 - e11)**2 / e11
+        chiSquare.append((score, word))
 
     # カイ二乗値の降順にソートして上位k個を返す
     chiSquare.sort(reverse=True)
     return chiSquare[0:k]
+
 
 if __name__ == "__main__":
     # 訓練データをロード
@@ -74,6 +78,6 @@ if __name__ == "__main__":
     # カイ二乗値を用いて特徴選択
     target = "海外"
     features = chisquare(target, trainData, k=5)
-    print ("[%s]" % target)
+    print("[%s]" % target)
     for score, word in features:
-        print (score, word)
+        print(score, word)

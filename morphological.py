@@ -8,20 +8,21 @@ import csv
 f = open('vocaburary.csv', 'w')
 csvWriter = csv.writer(f)
 
+
 def split(body):
     # YahooのAPIを利用して形態素解析
     request_URL = "http://jlp.yahooapis.jp/MAService/V1/parse"
     parameter = {'appid': """dj00aiZpPUxFRFVpcmx2UnpLNiZzPWNvbnN1bWVyc2VjcmV0Jng9ODc-""",
                  'sentence': body,
                  'results': 'ma',
-                # 'filter': '1|2|3|4|5|9|10'}
+                 # 'filter': '1|2|3|4|5|9|10'}
                  'filter': '1|2|9|10'}
     r = requests.get(request_URL, params=parameter)
 
     try:
         elem = fromstring(r.text.encode('utf-8'))
 
-    except:
+    except BaseException:
         pass
     else:
         words = []

@@ -1,14 +1,14 @@
-#coding:utf-8
+# coding:utf-8
 import codecs
 import sys
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-#from naivebayes_normal import NaiveBayes  # 特徴選択なしのナイーブベイズを使う
-#from naivebayes_fskai2 import NaiveBayes  # 特徴選択（カイ２乗）付きのナイーブベイズを使う
+# from naivebayes_normal import NaiveBayes  # 特徴選択なしのナイーブベイズを使う
+# from naivebayes_fskai2 import NaiveBayes  # 特徴選択（カイ２乗）付きのナイーブベイズを使う
 from naivebayes_fs import NaiveBayes  # 特徴選択（相互情報量）付きのナイーブベイズを使う
 
-#特徴語抽出数
+# 特徴語抽出数
 K = 500
 
 
@@ -20,6 +20,7 @@ for line in fp:
 fp.close()
 
 num = len(number)
+
 
 def crossValidation(data, N=num, randomize=False):
     """N-fold Cross Validationで分類精度を評価"""
@@ -55,6 +56,7 @@ def crossValidation(data, N=num, randomize=False):
     average = sum(accuracyList) / float(N)
     return average
 
+
 if __name__ == "__main__":
     # ブログデータをロード
     data = []
@@ -67,4 +69,4 @@ if __name__ == "__main__":
     # N-fold Cross Validationで分類精度を評価
     average = crossValidation(data, N=num, randomize=True)
 
-    print ("accuracy:", average)
+    print("accuracy:", average)
