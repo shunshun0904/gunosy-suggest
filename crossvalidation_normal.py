@@ -37,7 +37,7 @@ def crossValidation(data, N=num, randomize=False):
         # ナイーブベイズ分類器を学習
         nb = NaiveBayes(K)
         nb.train(trainData)
-        #print (nb)
+
         # テストデータの分類精度を計算
         hit = 0
         numTest = 0
@@ -51,7 +51,6 @@ def crossValidation(data, N=num, randomize=False):
         accuracy = float(hit) / float(numTest)
         accuracyList.append(accuracy)
     # N回の平均精度を求める
-    #print (accuracyList)
     average = sum(accuracyList) / float(N)
     return average
 

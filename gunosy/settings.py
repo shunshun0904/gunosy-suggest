@@ -28,12 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '192.168.33.10',
     '192.168.33.10:8000',
-<<<<<<< HEAD
     '192.168.33.10:8000/guesscategory'
 ]
-=======
-    '192.168.33.10:8000/guesscategory']
->>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
 DOWNLOAD_DELAY = 3
 ROBOTSTXT_OBEY = True
 DEPTH_LIMIT = 3
@@ -84,10 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gunosy.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -102,7 +94,6 @@ DATABASES = {
     }
 
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

@@ -69,7 +69,7 @@ for i in range(4000, 8000, 2000):  # 特徴語数（1801まで）、数パター
 
         fig = plt.figure()
         ax = plt.gca()
-        
+
         ax.plot(klist2, aclist2, "-o", c='b', label="Mutual information")
         ax.set_xlabel("vocaburary size ")
         ax.set_ylabel("accuracy")

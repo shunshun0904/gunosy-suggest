@@ -86,40 +86,25 @@ def gunosy_train(obj):
                 # csvを追記モードで開きます→ここでcsvを開くのはファイルが大きくなった時にcsvを開くのに時間がかかるためです
 
                 try:
-<<<<<<< HEAD
+
                     page_title = category_page_object.find_all
                     ("div", {"class": "list_title"})[page_index].a.get_text()
                     article_text = category_page_object.find_all
                     ('div', {'class': "list_lead"})[page_index].get_text()
-=======
-                    page_title = category_page_object.find_all("div", {"class": "list_title"})[
-                        page_index].a.get_text()
-                    article_text = category_page_object.find_all('div', {'class': "list_lead"})[
-                        page_index].get_text()
->>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
-                    #textdata = []
-                    # textdata.append(article_text)
+
+                    page_title = category_page_object.find_all
+                    ("div", {"class": "list_title"})[page_index].a.get_text()
+                    article_text = category_page_object.find_all
+                    ('div', {'class': "list_lead"})[page_index].get_text()
+
                     listdata = []
                     listdata.append(page_title)
                     listdata2 = []
                     listdata2.append(article_text)
-<<<<<<< HEAD
-=======
-                    #listdata3 = []
-                    #listdata3.append("%s %s\n" % (listdata, " ".join(listdata2)))
-                    # listdata3.append(%s %s % (page_title,article_text))
->>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
                     csvWriter.writerow(listdata + listdata2)
                     listd = []
                     listd.append(name)
                     csvWriter2.writerow(listd)
-<<<<<<< HEAD
-=======
-                    # if page_numbers % 100 == 0 :
-                    #    listd = []
-                    #    listd.append(name)
-                    #    csvWriter2.writerow(listd)
->>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
                 except AttributeError as e:
                     # エラーの内容を端末に出力
                     print(e)
