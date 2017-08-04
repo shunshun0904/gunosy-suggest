@@ -14,6 +14,6 @@ install:
   - pip install ez_setup
   - python setup.py -q install
   - pip install .
-  - pip install requirements.txt
+  - pip install -r requirements.txt
 script:
   - invoke test
