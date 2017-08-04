@@ -3,13 +3,7 @@ env:
   - DJANGO_VERSION=1.11.3
 python:
   - "3.6"
-#before_install:
-#  - sudo apt-get update
-#  - sudo apt-get -y install python-pip
-#  - sudo pip install --upgrade pip
-#  - pip install --upgrade pip
-#  - pip install pep8
-#  - pip install autopep8
+  
 before_install:
 # テストに必要な環境を整える
   - sudo apt-get update
@@ -25,3 +19,4 @@ install:
 script:
   - python manage.py migrate
   - python manage.py test
+  - invoke test
