@@ -12,8 +12,12 @@ python:
 #  - pip install autopep8
 install:
   - pip install -q Django==$DJANGO_VERSION
+  - pip install --upgrade setuptools
+  - pip install ez_setup
+  - pip install unroll
   - python setup.py -q install
   - pip install .
-  - pip install -r requirements.txt 
+  - pip install --user -r requirements.txt
 script:
-  - manage.py
+  - python manage.py migrate
+  - python manage.py test
