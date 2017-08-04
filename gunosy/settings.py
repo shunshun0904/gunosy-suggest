@@ -25,7 +25,11 @@ SECRET_KEY = 'd5qo6-#)sl)9v9lkj$()bk0e=)oqcfsvlzzu76pbwru3qz+6u!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.33.10', '192.168.33.10:8000', '192.168.33.10:8000/guesscategory' ]
+ALLOWED_HOSTS = [
+    '192.168.33.10',
+    '192.168.33.10:8000',
+    '192.168.33.10:8000/guesscategory'
+]
 DOWNLOAD_DELAY = 3
 ROBOTSTXT_OBEY = True
 DEPTH_LIMIT = 3
@@ -82,10 +86,7 @@ WSGI_APPLICATION = 'gunosy.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-
         'NAME': 'app1_db',
         'USER': 'app1_user',
         'PASSWORD': 'app1_passwd',
