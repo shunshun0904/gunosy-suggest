@@ -14,7 +14,6 @@ install:
   - pip install -q Django==$DJANGO_VERSION
   - pip install --upgrade setuptools
   - pip install ez_setup
-  - pip install unroll
   - python setup.py -q install
   - pip install .
   - pip install --user -r requirements.txt
