@@ -36,7 +36,6 @@ for i in range(4000, 8000, 2000):  # 特徴語数（1801まで）、数パター
             # ナイーブベイズ分類器を学習
             nb = NaiveBayes(K)
             nb.train(trainData)
-            #print (nb)
             # テストデータの分類精度を計算
             hit = 0
             numTest = 0
@@ -50,7 +49,6 @@ for i in range(4000, 8000, 2000):  # 特徴語数（1801まで）、数パター
             accuracy = float(hit) / float(numTest)
             accuracyList.append(accuracy)
         # N回の平均精度を求める
-        #print (accuracyList)
         average = sum(accuracyList) / float(N)
         aclist2.append(average)
         return average
@@ -71,8 +69,7 @@ for i in range(4000, 8000, 2000):  # 特徴語数（1801まで）、数パター
 
         fig = plt.figure()
         ax = plt.gca()
-        #ax.plot(klist,aclist, c='b', label="nothing")
-        #ax.plot(klist1,aclist1, c='r', label="Mutual information")
+        
         ax.plot(klist2, aclist2, "-o", c='b', label="Mutual information")
         ax.set_xlabel("vocaburary size ")
         ax.set_ylabel("accuracy")
