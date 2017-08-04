@@ -86,51 +86,53 @@ def gunosy_train(obj):
                 # csvを追記モードで開きます→ここでcsvを開くのはファイルが大きくなった時にcsvを開くのに時間がかかるためです
 
                 try:
-<<<<<<< HEAD
-                    page_title = category_page_object.find_all
-                    ("div", {"class": "list_title"})[page_index].a.get_text()
-                    article_text = category_page_object.find_all
-                    ('div', {'class': "list_lead"})[page_index].get_text()
-=======
-                    page_title = category_page_object.find_all("div", {"class": "list_title"})[
-                        page_index].a.get_text()
-                    article_text = category_page_object.find_all('div', {'class': "list_lead"})[
-                        page_index].get_text()
->>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
-                    #textdata = []
-                    # textdata.append(article_text)
-                    listdata = []
-                    listdata.append(page_title)
-                    listdata2 = []
-                    listdata2.append(article_text)
-<<<<<<< HEAD
-=======
-                    #listdata3 = []
-                    #listdata3.append("%s %s\n" % (listdata, " ".join(listdata2)))
-                    # listdata3.append(%s %s % (page_title,article_text))
->>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
-                    csvWriter.writerow(listdata + listdata2)
-                    listd = []
-                    listd.append(name)
-                    csvWriter2.writerow(listd)
-<<<<<<< HEAD
-=======
-                    # if page_numbers % 100 == 0 :
-                    #    listd = []
-                    #    listd.append(name)
-                    #    csvWriter2.writerow(listd)
->>>>>>> ad263d0b5740e50931d8a7afee75e8495bea1084
-                except AttributeError as e:
-                    # エラーの内容を端末に出力
-                    print(e)
-                    continue
-                    # 1行書き込み
 
-                print("No%s,obj.train(%s,%s)" %
-                      (page_numbers, page_title, name))
 
-                page_numbers = page_numbers + 1
-                # 取得したタイトルのテキストを学習させます。
-                obj.train(page_title + article_text, name)
-                # Gunosyのサイトでアクセス制限があれば以下の関数を利用して下さい。
-                # time.sleep(1)
+<< << << < HEAD
+    page_title = category_page_object.find_all
+    ("div", {"class": "list_title"})[page_index].a.get_text()
+    article_text = category_page_object.find_all
+    ('div', {'class': "list_lead"})[page_index].get_text()
+== == == =
+    page_title = category_page_object.find_all("div", {"class": "list_title"})[
+        page_index].a.get_text()
+    article_text = category_page_object.find_all('div', {'class': "list_lead"})[
+        page_index].get_text()
+>>>>>> > ad263d0b5740e50931d8a7afee75e8495bea1084
+#textdata = []
+# textdata.append(article_text)
+    listdata = []
+    listdata.append(page_title)
+    listdata2 = []
+    listdata2.append(article_text)
+<< << << < HEAD
+== == == =
+#listdata3 = []
+#listdata3.append("%s %s\n" % (listdata, " ".join(listdata2)))
+# listdata3.append(%s %s % (page_title,article_text))
+>>>>>> > ad263d0b5740e50931d8a7afee75e8495bea1084
+    csvWriter.writerow(listdata + listdata2)
+    listd = []
+    listd.append(name)
+    csvWriter2.writerow(listd)
+<< << << < HEAD
+== == == =
+# if page_numbers % 100 == 0 :
+#    listd = []
+#    listd.append(name)
+#    csvWriter2.writerow(listd)
+>>>>>> > ad263d0b5740e50931d8a7afee75e8495bea1084
+    except AttributeError as e:
+        # エラーの内容を端末に出力
+        print(e)
+        continue
+        # 1行書き込み
+
+    print("No%s,obj.train(%s,%s)" %
+          (page_numbers, page_title, name))
+
+    page_numbers = page_numbers + 1
+    # 取得したタイトルのテキストを学習させます。
+    obj.train(page_title + article_text, name)
+    # Gunosyのサイトでアクセス制限があれば以下の関数を利用して下さい。
+    # time.sleep(1)
