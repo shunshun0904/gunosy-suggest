@@ -13,7 +13,8 @@ csvWriter = csv.writer(f)
 def split(body):
     request_URL = "http://jlp.yahooapis.jp/MAService/V1/parse"
     parameter = {
-        'appid': """dj00aiZpPUxFRFVpcmx2UnpLNiZzPWNvbnN1bWVyc2VjcmV0Jng9ODc-""",
+        'appid':
+        """dj00aiZpPUxFRFVpcmx2UnpLNiZzPWNvbnN1bWVyc2VjcmV0Jng9ODc-""",
         'sentence': body,
         'results': 'ma',
         'filter': '1|2|9|10'}
