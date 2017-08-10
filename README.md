@@ -101,11 +101,11 @@ stopwords.txtにまとめてある。（参考にしたサイトhttp://qiita.com
 
 ```
 
-<img src="https://user-images.githubusercontent.com/25298659/28904628-4fb2bc98-7847-11e7-8260-86d79efdf83c.png"  title="サンプル" >
+<img src="https://user-images.githubusercontent.com/25298659/29155355-98bc063a-7dd6-11e7-9118-7b06561e703c.png"  title="サンプル" >
 
 以上より、特徴選択は行わずに、ストップワードの除去のみ用いたほうが精度が若干向上することがわかる。
 
-
+```
 ■上記グラフの作成手順
 
 １、以下のコマンドで、4パターンについて計算を実行し、精度をhoge.csvに保存する
@@ -116,11 +116,19 @@ $sh graph.sh
 
 $python feature_selection_all.py
 
+```
 ■特徴選択による精度の確認
 一般的には特徴選択を用いた単語の除去は精度が向上するが、今回は相互情報量、カイ２乗値による特徴選択を用いると精度が悪化した。
 以下に選択単語数が1〜1800までの時の精度のグラフを示す。単語数が多くなるにつれ、特徴選択を用いなかった分類器の精度に近くなる。
 ```
 
-<img src="https://user-images.githubusercontent.com/25298659/28902353-550d955e-7839-11e7-942d-18e0a14a46a6.png"  title="相互情報量による特徴選択" >　<img src="https://user-images.githubusercontent.com/25298659/28902363-682f2c56-7839-11e7-9b2f-fcab9a3f19f8.png"  title="カイ２乗値による特徴選択" >　
+<img src="https://user-images.githubusercontent.com/25298659/29155366-b543ef8e-7dd6-11e7-92f8-78dcf2495ef7.png"  title="相互情報量による特徴選択" >　<img src="https://user-images.githubusercontent.com/25298659/29155370-bd570f1c-7dd6-11e7-802f-ae1272bc9c0c.png"  title="カイ２乗値による特徴選択" >　
 
+```
 ■上記グラフの作成手順
+
+$python crossvalidation_Mutualinfo.py
+
+$python crossvalidation_Chi2.py
+を実行する。（10回ずつ交差検定を行なっているためグラフが完成するまでは時間がかかります）   
+```     
