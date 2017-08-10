@@ -36,7 +36,7 @@ DEPTH_LIMIT = 3
 
 # Application definition
 
-INSTALLED_APPS= [
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +48,7 @@ INSTALLED_APPS= [
     'gunosy',
 ]
 
-MIDDLEWARE= [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,9 +58,9 @@ MIDDLEWARE= [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF= 'gunosy.urls'
+ROOT_URLCONF = 'gunosy.urls'
 
-TEMPLATES= [
+TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
@@ -78,12 +78,12 @@ TEMPLATES= [
     },
 ]
 
-WSGI_APPLICATION= 'gunosy.wsgi.application'
+WSGI_APPLICATION = 'gunosy.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES= {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'app1_db',
@@ -124,17 +124,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE= 'ja'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE= 'Asia/Tokyo'
+TIME_ZONE = 'Asia/Tokyo'
 
-USE_I18N= True
+USE_I18N = True
 
-USE_L10N= True
+USE_L10N = True
 
-USE_TZ= True
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL= '/static/'
+STATIC_URL = '/static/'
