@@ -6,8 +6,6 @@ from collections import defaultdict
 from feature_selection import mutual_information
 
 
-
-
 class NaiveBayes:
     """Multinomial Naive Bayes"""
 

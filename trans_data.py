@@ -10,7 +10,9 @@ from collections import Counter
 # [category] [word:count] [word:count] ...  <- doc1
 # [category] [word:count] [word:count] ...  <- doc2
 
-#ストップワード込みのデータを作成する関数
+# ストップワード込みのデータを作成する関数
+
+
 def trans_data1(categoryfile, datafile, outfile):
     # カテゴリをロード
     category = []
@@ -19,8 +21,6 @@ def trans_data1(categoryfile, datafile, outfile):
         line = line.rstrip()
         category.append(line.split()[0])
     fp.close()
-
-
 
     rownum = []
     fp = open("vocaburary.csv")
@@ -54,6 +54,8 @@ def trans_data1(categoryfile, datafile, outfile):
     #    train_data.clear()
 
 # ストップワードなしのデータを作成する関数
+
+
 def trans_data2(categoryfile, datafile, outfile):
     # カテゴリをロード
     category = []
@@ -62,8 +64,6 @@ def trans_data2(categoryfile, datafile, outfile):
         line = line.rstrip()
         category.append(line.split()[0])
     fp.close()
-
-
 
     rownum = []
     fp = open("vocaburary.csv")

@@ -7,7 +7,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-#4パターンの精度を配列に格納
+# 4パターンの精度を配列に格納
 height = []
 fp = open("hoge.csv")
 for line in fp:
@@ -15,7 +15,7 @@ for line in fp:
     height.append(line.split()[0])
 fp.close()
 
-#棒グラフの作成
+# 棒グラフの作成
 left = np.array([1, 2, 3, 4])
 label = ["Only_stopwords", "Nothing", "Chi-squared", "Mutual-info"]
 plt.bar(left, height, tick_label=label, align="center")
