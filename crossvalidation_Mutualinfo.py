@@ -1,14 +1,15 @@
 # coding:utf-8
+# 相互情報量を用いた交差検定（ストップワード除去なし）
 import codecs
 import sys
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from naivebayes_fs import NaiveBayes  # 特徴選択（相互情報量）付きのナイーブベイズを使う
-matplotlib.use('Agg')
 
 klist2 = []
 aclist2 = []
-for i in range(4000, 8000, 2000):  # 特徴語数（1801まで）、数パターン（200語おきに）計算
+for i in range(1, 2001, 200):  # 特徴語数（1801まで）、数パターン（200語おきに）計算
     K = i
     klist2.append(K)
     number = []
@@ -64,19 +65,17 @@ for i in range(4000, 8000, 2000):  # 特徴語数（1801まで）、数パター
         fp.close()
         # N-fold Cross Validationで分類精度を評価
         average = crossValidation(data, N=num, randomize=True)
-
         print("accuracy:", average)
 
         fig = plt.figure()
         ax = plt.gca()
-
         ax.plot(klist2, aclist2, "-o", c='b', label="Mutual information")
         ax.set_xlabel("vocaburary size ")
         ax.set_ylabel("accuracy")
         ax.set_title("acucuracy-vocabulalysize")
         plt.legend()
-        plt.xlim(0, 8100)
+        plt.xlim(0, 1900)
         plt.ylim(0, 1.0)
         plt.show()
-        filename = "feature_selection_mutual-hoge.png"
+        filename = "feature_selection_mutual.png"
         plt.savefig(filename)
