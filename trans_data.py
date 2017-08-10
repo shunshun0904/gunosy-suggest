@@ -53,7 +53,7 @@ def trans_data1(categoryfile, datafile, outfile):
     fp.close()
 
 
-#ストップワードなしのデータを作成する関数
+# ストップワードなしのデータを作成する関数
 def trans_data2(categoryfile, datafile, outfile):
     # カテゴリをロード
     category = []
@@ -101,7 +101,6 @@ def trans_data2(categoryfile, datafile, outfile):
     for i in range(num):
         fp.write("%s %s\n" % (category[i], " ".join(train_data[i])))
     fp.close()
-
 
 
 if __name__ == "__main__":
