@@ -12,9 +12,9 @@ before_install:
 
 install:
   - pip install -q Django==$DJANGO_VERSION
-  #- pip install --upgrade setuptools
-  #- pip install ez_setup
-  #- python setup.py -q install
+  - pip install --upgrade setuptools
+  - pip install ez_setup
+  - python setup.py -q install
   - pip install .
   - pip install -r requirements.txt
 script:
