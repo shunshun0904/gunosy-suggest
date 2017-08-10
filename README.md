@@ -47,15 +47,14 @@ $cd gunosy
 
 $ls
 
-README.md                           crossvalidation_stopword_normal.py  gettrain.py       naivebayes.py         subject.csv
-__pycache__                         db.sqlite3                          graph.sh          naivebayes_fs.py      tasks.py
-category.csv                        eval.py                             guesscategory     naivebayes_fskai2.py  templates
-comparison_stopwords.png            feature_selection.png               gunosy            naivebayes_normal.py  trans_data.py
-crossvalidation_Chi2.py             feature_selection.py                gunosy-stop.csv   pip.txt               vocaburary.csv
-crossvalidation_Mutualinfo.py       feature_selection_all.py            gunosy.csv        requirements-dev.txt  vocaburary0.csv
-crossvalidation_normal.py           feature_selection_mutual.png        hoge.csv          requirements.txt
-crossvalidation_stopword_Chi2.py    feature_selectionkai2.py            manage.py         setup.py
-crossvalidation_stopword_Mutual.py  gethtmltext.py                      morphological.py  stopwords.txt
+README.md                         crossvalidation_stopword_Mutual.py  gethtmltext.py   manage.py             requirements.txt
+__pycache__                       crossvalidation_stopword_normal.py  gettrain.py      morphological.py      setup.py
+category.csv                      db.sqlite3                          graph.sh         naivebayes.py         stopwords.txt
+comparison_stopwords.png          feature_selection.py                guesscategory    naivebayes_fs.py      subject.csv
+crossvalidation_Chi2.py           feature_selection_all.py            gunosy           naivebayes_fskai2.py  tasks.py
+crossvalidation_Mutualinfo.py     feature_selection_ka2.png           gunosy-stop.csv  naivebayes_normal.py  templates
+crossvalidation_normal.py         feature_selection_mutual.png        gunosy.csv       pip.txt               trans_data.py
+crossvalidation_stopword_Chi2.py  feature_selectionkai2.py            hoge.csv         requirements-dev.txt  vocaburary.csv
 
 
 ４、現在いるフォルダが３のようになったら以下のコマンドでサーバーを起動  
