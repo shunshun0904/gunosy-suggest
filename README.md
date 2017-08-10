@@ -62,7 +62,7 @@ crossvalidation_stopword_Chi2.py  feature_selectionkai2.py            hoge.csv  
 $python manage.py runserver　0:8000　
 
 
-５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し（３０秒ぐらい）待ちます。  
+５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し待ちます。  
 
 ６、５を終了後、ブラウザに以下のurlにアクセス  
 http://127.0.0.1:8000/guesscategory/
