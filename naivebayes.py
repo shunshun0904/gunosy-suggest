@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
+# 特徴選択なしストップワード除去なしのナイーブベイズのプログラム
 import math
 import sys
 from collections import defaultdict
 # yahoo!形態素解析
 import morphological
-
 
 def getwords(doc):
     words = [s.lower() for s in morphological.split(doc)]
@@ -38,14 +38,12 @@ class NaiveBayes:
         best = None  # 最適なカテゴリ
         max = -sys.maxsize
         word = getwords(doc)
-
         # カテゴリ毎に確率の対数を求める
         for cat in list(self.catcount.keys()):
             prob = self.score(word, cat)
             if prob > max:
                 max = prob
                 best = cat
-
         return best
 
     def score(self, word, cat):

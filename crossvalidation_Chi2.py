@@ -1,14 +1,16 @@
 # coding:utf-8
+# カイ２乗値を用いた交差検定（ストップワード除去なし）
 import codecs
 import sys
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from naivebayes_fskai2 import NaiveBayes  # 特徴選択（カイ２乗）付きのナイーブベイズを使う
 
 
 klist2 = []
 aclist2 = []
-matplotlib.use('Agg')
+
 for i in range(1, 2001, 200):  # 特徴語数（1801まで）、数パターン（200語おきに）計算
     K = i
     klist2.append(K)
@@ -76,7 +78,7 @@ for i in range(1, 2001, 200):  # 特徴語数（1801まで）、数パターン�
         ax.set_ylabel("accuracy")
         ax.set_title("acucuracy-vocabulalysize")
         plt.legend()
-        plt.xlim(0, 2100)
+        plt.xlim(0, 1900)
         plt.ylim(0, 1.0)
         plt.show()
         filename = "feature_selection_ka2.png"

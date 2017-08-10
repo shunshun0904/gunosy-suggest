@@ -5,15 +5,14 @@ import requests
 from xml.etree.ElementTree import *
 import csv
 
-
+# 抽出データを[単語,単語,....]の形式に変換
 f = open('vocaburary.csv', 'w')
 csvWriter = csv.writer(f)
 
 
 def split(body):
     request_URL = "http://jlp.yahooapis.jp/MAService/V1/parse"
-    parameter = {'appid': """dj00aiZpPUxFRFVpcmx2UnpLNiZ
-    zPWNvbnN1bWVyc2VjcmV0Jng9ODc-""",
+    parameter = {'appid': """dj00aiZpPUxFRFVpcmx2UnpLNiZzPWNvbnN1bWVyc2VjcmV0Jng9ODc-""",
                  'sentence': body,
                  'results': 'ma',
                  'filter': '1|2|9|10'}

@@ -1,10 +1,11 @@
 # coding:utf-8
+# 特徴選択（カイ２乗値による）を行うナイーブベイズ分類器（精度検証用）
 import math
 import sys
 from collections import defaultdict
 from feature_selectionkai2 import chisquare
 
-# 特徴選択を行うナイーブベイズ分類器
+
 
 
 class NaiveBayes:

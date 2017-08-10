@@ -9,7 +9,10 @@
 Python 3.6
 Django 1.11.3
 ```
-
+####コード規約
+```
+travis-ciを使うことで自動でPEP8のチェックができる
+```
 ####訓練データ
 ```
 GunosyのWebサイト(https://gunosy.com/)のエンタメ,スポーツ,おもしろ,国内,海外,コラム,IT・科学,グルメカテゴリー
@@ -22,10 +25,8 @@ GunosyのWebサイト(https://gunosy.com/)のエンタメ,スポーツ,おもし
 
 
 よって、訓練データ数は８(カテゴリー)×２０（カテゴリー１ページあたりの記事数）×（ページ）=800
-(実際は若干800より少ない。何回か試したがクローリングが最後まで行かず、最終カテゴリーのみ若干データ数が少ない。)
 
-
-また汎用性を持たせるためgettrain.pyモジュールの41行目と42行目のCATEGORY_PAGE_START_INDEX = 1、
+また汎用性を持たせるためgettrain.pyモジュールの30行目と31行目のCATEGORY_PAGE_START_INDEX = 1、
 CATEGORY_PAGE_END_INDEX = 100を変更すると取得するカテゴリーページを変更することが出来る。
 
 ■形態素解析について
@@ -46,15 +47,20 @@ $cd gunosy
 
 $ls
 
-README.md		gunosy			naivebayes.py       
-__pycache__		inputscraping.py	scraiping.py
-db.sqlite3		manage.py		templates
-guesscategory		morphological.py
+README.md                           crossvalidation_stopword_normal.py  gettrain.py       naivebayes.py         subject.csv
+__pycache__                         db.sqlite3                          graph.sh          naivebayes_fs.py      tasks.py
+category.csv                        eval.py                             guesscategory     naivebayes_fskai2.py  templates
+comparison_stopwords.png            feature_selection.png               gunosy            naivebayes_normal.py  trans_data.py
+crossvalidation_Chi2.py             feature_selection.py                gunosy-stop.csv   pip.txt               vocaburary.csv
+crossvalidation_Mutualinfo.py       feature_selection_all.py            gunosy.csv        requirements-dev.txt  vocaburary0.csv
+crossvalidation_normal.py           feature_selection_mutual.png        hoge.csv          requirements.txt
+crossvalidation_stopword_Chi2.py    feature_selectionkai2.py            manage.py         setup.py
+crossvalidation_stopword_Mutual.py  gethtmltext.py                      morphological.py  stopwords.txt
 
 
 ４、現在いるフォルダが３のようになったら以下のコマンドでサーバーを起動  
 
-$python manage.py runserver　　
+$python manage.py runserver　0:8000　
 
 
 ５、サーバーを起動後gunosyサイトの記事を訓練させているため、少し（３０秒ぐらい）待ちます。  
@@ -78,7 +84,7 @@ http://127.0.0.1:8000/guesscategory/
 
 ２、python crossvalidation_normal.py を実行
 交差検定をし、精度を評価する。
-分類精度は0.7690355329949239　である。
+分類精度は0.7835　である。
 ```
 
 
@@ -113,4 +119,10 @@ stopwords.txtにまとめてある。（参考にしたサイトhttp://qiita.com
 ####上記グラフの作成手順
 
 ```
-■特徴選択による精度の確認
+１、以下のコマンドで、4パターンについて計算を実行し、精度をhoge.csvに保存する
+
+$sh graph.sh
+
+２、以下のコマンドを実行し、hoge.csvを用いてグラフの作成  (comparison_stopwords.png)
+
+$python feature_selection_all.py

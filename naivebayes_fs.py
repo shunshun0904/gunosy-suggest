@@ -1,16 +1,17 @@
 # coding:utf-8
+# 特徴選択（相互情報量による）を行うナイーブベイズ分類器（精度検証用）
 import math
 import sys
 from collections import defaultdict
 from feature_selection import mutual_information
 
-# 特徴選択を行うナイーブベイズ分類器
+
 
 
 class NaiveBayes:
     """Multinomial Naive Bayes"""
 
-    def __init__(self, k):          # 相互情報量が大きい順にk個の単語をボキャブラリとする
+    def __init__(self, k):
         self.categories = set()     # カテゴリの集合
         self.vocabularies = set()   # ボキャブラリの集合
         self.wordcount = {}         # wordcount[cat][word] カテゴリでの単語の出現回数
@@ -61,6 +62,7 @@ class NaiveBayes:
         """事後確率の対数 log(P(cat|doc)) がもっとも大きなカテゴリを返す"""
         best = None
         max = -sys.maxsize
+
         for cat in self.catcount.keys():
             p = self.score(doc, cat)
             if p > max:

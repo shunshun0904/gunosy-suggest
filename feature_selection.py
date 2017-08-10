@@ -1,4 +1,5 @@
 # coding:utf-8
+# 相互情報量による特徴選択を行うプログラム
 import codecs
 import math
 import sys

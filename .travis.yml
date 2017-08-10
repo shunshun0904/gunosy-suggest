@@ -6,19 +6,19 @@ python:
 
 before_install:
 # テストに必要な環境を整える
-  - pip install -r requirements-dev.txt
+  #- pip install -r requirements-dev.txt
   - pip install pep8
   - pip install autopep8
 
 install:
   - pip install -q Django==$DJANGO_VERSION
-  - pip install --upgrade setuptools
-  - pip install ez_setup
-  - python setup.py -q install
+  #- pip install --upgrade setuptools
+  #- pip install ez_setup
+  #- python setup.py -q install
   - pip install .
   - pip install -r requirements.txt
 script:
-  - invoke test
+  #- invoke test
   # Run pep8 on all .py files in all subfolders
     # We must ignore E402 module level import not at top of file
     # because of use case sys.path.append('..'); import <module>

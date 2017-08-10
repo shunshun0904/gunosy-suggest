@@ -2,7 +2,7 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib.error import HTTPError
-import naivebayes
+import naivebayes_normal
 import time
 import csv
 
@@ -83,20 +83,10 @@ def gunosy_train(obj):
                 continue
 
             for page_index in range(PAGE_TITLE_START, PAGE_TITLE_END):
-                # csvを追記モードで開きます→ここでcsvを開くのはファイルが大きくなった時にcsvを開くのに時間がかかるためです
-
                 try:
-
-                    page_title = category_page_object.find_all
-                    ("div", {"class": "list_title"})[page_index].a.get_text()
-                    article_text = category_page_object.find_all
-                    ('div', {'class': "list_lead"})[page_index].get_text()
-
-                    page_title = category_page_object.find_all
-                    ("div", {"class": "list_title"})[page_index].a.get_text()
-                    article_text = category_page_object.find_all
-                    ('div', {'class': "list_lead"})[page_index].get_text()
-
+                    page_title = category_page_object.find_all("div", {"class": "list_title"})[page_index].a.get_text()
+                    article_text = category_page_object.find_all('div', {'class': "list_lead"})[page_index].get_text()
+                    sum_text = page_title + article_text
                     listdata = []
                     listdata.append(page_title)
                     listdata2 = []
@@ -112,10 +102,11 @@ def gunosy_train(obj):
                     # 1行書き込み
 
                 print("No%s,obj.train(%s,%s)" %
-                      (page_numbers, page_title, name))
+                      (page_numbers, sum_text, name))
 
                 page_numbers = page_numbers + 1
                 # 取得したタイトルのテキストを学習させます。
-                obj.train(page_title + article_text, name)
+                #obj.train(page_title, name)
+                obj.train(sum_text, name)
                 # Gunosyのサイトでアクセス制限があれば以下の関数を利用して下さい。
-                # time.sleep(1)
+                time.sleep(1)

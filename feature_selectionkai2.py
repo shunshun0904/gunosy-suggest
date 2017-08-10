@@ -1,4 +1,5 @@
 # coding:utf-8
+# カイ２乗値による特徴選択を行うプログラム
 import codecs
 import math
 import sys
