@@ -18,7 +18,7 @@ install:
   - pip install .
   - pip install -r requirements.txt
 script:
-  #- invoke test
+  - invoke test
   # Run pep8 on all .py files in all subfolders
     # We must ignore E402 module level import not at top of file
     # because of use case sys.path.append('..'); import <module>
