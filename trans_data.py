@@ -51,11 +51,9 @@ def trans_data1(categoryfile, datafile, outfile):
     for i in range(num):
         fp.write("%s %s\n" % (category[i], " ".join(train_data[i])))
     fp.close()
-    #    train_data.clear()
-
-# ストップワードなしのデータを作成する関数
 
 
+#ストップワードなしのデータを作成する関数
 def trans_data2(categoryfile, datafile, outfile):
     # カテゴリをロード
     category = []
@@ -103,11 +101,10 @@ def trans_data2(categoryfile, datafile, outfile):
     for i in range(num):
         fp.write("%s %s\n" % (category[i], " ".join(train_data[i])))
     fp.close()
-    #    train_data.clear()
+
 
 
 if __name__ == "__main__":
     # 訓練データを変換
     trans_data1("category.csv", "vocaburary.csv", "gunosy.csv")
     trans_data2("category.csv", "vocaburary.csv", "gunosy-stop.csv")
-    #trans_data("category.csv", "vocaburary.csv", "gunosy-test-stop.csv")
