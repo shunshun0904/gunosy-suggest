@@ -6,8 +6,6 @@ from collections import defaultdict
 from feature_selectionkai2 import chisquare
 
 
-
-
 class NaiveBayes:
     """Multinomial Naive Bayes"""
 

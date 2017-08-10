@@ -21,6 +21,8 @@ fp.close()
 num = len(number)
 
 # 交差検定のプログラム
+
+
 def crossValidation(data, N=num, randomize=False):
     """N-fold Cross Validationで分類精度を評価"""
     # データをシャッフル
@@ -51,7 +53,7 @@ def crossValidation(data, N=num, randomize=False):
         accuracyList.append(accuracy)
     # N回の平均精度を求める
     average = sum(accuracyList) / float(N)
-    average_f = round(average,4)
+    average_f = round(average, 4)
     return average
 
 
@@ -66,5 +68,5 @@ if __name__ == "__main__":
     fp.close()
     # N-fold Cross Validationで分類精度を評価
     average = crossValidation(data, N=num, randomize=True)
-    average_f = round(average,4)
+    average_f = round(average, 4)
     print(average_f)
