@@ -37,7 +37,7 @@ CATEGORY_PAGE_END_INDEX = 100を変更すると取得するカテゴリーペー
 ```
 １、課題のgunosyフォルダをクローン  
 
-$git clone https://github.com/shotanaka0513/gunosy.git  
+$git clone https://github.com/shunshun0904/gunosy.git  
 
 ２、クローンしたgunosyフォルダへ移動  
 
