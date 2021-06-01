@@ -7,4 +7,4 @@ lxml==3.8.0
 matplotlib==2.0.2
 numpy==1.13.1
 requests==2.18.1
-urllib3==1.21.1
+urllib3==1.26.5
