@@ -3,7 +3,7 @@ beautifulsoup4==4.6.0
 cssselect==1.0.1
 Django==1.11.3
 django-bootstrap-form==3.2.1
-lxml==3.8.0
+lxml==4.9.1
 matplotlib==2.0.2
 numpy==1.13.1
 requests==2.18.1
